@@ -9,21 +9,19 @@ var dataTest = require('./dataTest');
 describe('AppController (e2e)', () => {
     let app: INestApplication;
     let servient = new Servient();
-    /* servient.addCredentials({
-         "td": {
-             username: "elena",
-             password: "ciao",
-             token: "1/mZ1edKKACtPAb7zGlwSzvs72PvhAbGmB8K1ZrGxpcNM"
-         }});
-        */
+     servient.addCredentials({
+         "thing:1": {
+             token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVsZW5hIiwic3ViIjoxLCJpYXQiOjE2MTM5MTc2MTcsImV4cCI6MTYxMzkxNzc5N30.JJZ1ml1SyT2iBUZ0QBZ_6MiOgMhtlWHl9D-D5KRV8bc"
+              }});
+        
     servient.addClientFactory(new HttpClientFactory(null));
 
     let wotHelper = new Helpers(servient);
 
     beforeEach(async () => {
-        jest.spyOn(console, 'warn').mockImplementation(() => { });
-        jest.spyOn(console, 'debug').mockImplementation(() => { });
-        jest.spyOn(console, 'log').mockImplementation(() => { });
+       // jest.spyOn(console, 'warn').mockImplementation(() => { });
+       // jest.spyOn(console, 'debug').mockImplementation(() => { });
+       // jest.spyOn(console, 'log').mockImplementation(() => { });
         await dataTest.initializeDB();
         const moduleFixture: TestingModule = await Test.createTestingModule({
             imports: [AppModule, AuthModule],
@@ -33,7 +31,7 @@ describe('AppController (e2e)', () => {
         await app.init();
     });
 
-    /*
+    
         it("should invoke Action createTD", async () => {
             await wotHelper.fetch("http://localhost:3000").then(async (td) => {
                 
@@ -48,8 +46,8 @@ describe('AppController (e2e)', () => {
                     });
             }).catch((err) => { console.error("Fetch error:", err); });
             expect(201);
-        });*/
-    /*
+        });
+    
      it("should invoke Action deleteTD", async () => {
             await wotHelper.fetch("http://localhost:3000").then(async (td) => {
                 
@@ -64,7 +62,8 @@ describe('AppController (e2e)', () => {
             }).catch((err) => { console.error("Fetch error:", err); });
             expect(201);
         });
-    */
+    
+   
     it("should readProperty retrieveTD", async () => {
         await wotHelper.fetch("http://localhost:3000").then(async (td) => {
             try {
@@ -82,7 +81,7 @@ describe('AppController (e2e)', () => {
         }).catch((err) => { console.error("Fetch error:", err); });
 
     });
-    /*
+    
     it("should readProperty searchJSONPath", async () => {
         await wotHelper.fetch("http://localhost:3000").then(async (td) => {
             try {
@@ -100,5 +99,5 @@ describe('AppController (e2e)', () => {
         
     });
     
-    */
+    
 });

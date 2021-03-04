@@ -5,6 +5,7 @@
     "version": {
         "instance": "1.0.0-alpha"
     },
+    "id": "thing:1",
     "base": "http://localhost:3000",
     "properties": {
         "retrieveTD": {

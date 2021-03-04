@@ -9,7 +9,7 @@ const mergePatch = require("json-merge-patch");
 export class ThingdirectoryService {
 
     createTD(data: any): string {
-       // console.log(data);
+       // console.log(data);  
         var ajv = new Ajv();
         var validate = ajv.compile(schema);
         var valid = validate(data);
@@ -33,7 +33,7 @@ export class ThingdirectoryService {
             return ris;
         }
         else {
-            console.log('Invalid: ' + ajv.errorsText(validate.errors));
+           // console.log('Invalid: ' + ajv.errorsText(validate.errors));
             throw new Error("Errore");
         }
 
